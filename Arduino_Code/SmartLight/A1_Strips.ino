@@ -1,14 +1,14 @@
 // Which pin on the ESP8266 is connected to the NeoPixels?
 #include <Adafruit_NeoPixel.h>
 
-#define PIN 2
-#define brightness 255
-#define pixelNumber 48
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(pixelNumber, PIN, NEO_GRB + NEO_KHZ800);
+#define NEO_PIN 2
+#define NEO_BRIGHTNESS 255
+#define NEO_PIXELS 48
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NEO_PIXELS, NEO_PIN, NEO_GRB + NEO_KHZ800);
 
 void initStripNeoPixel(){
   pixels.begin(); // This initializes the NeoPixel library.
-  pixels.setBrightness(brightness);
+  pixels.setBrightness(NEO_BRIGHTNESS);
   pixels.show();
 }
 void initStripAnalog(){
@@ -18,16 +18,13 @@ void initStripAnalog(){
 }
 void initStrip(){
   // set new color
-  switch (lampType){
-    case 1:
-      initStripNeoPixel();
-      break;
-    case 2:
-      initStripAnalog();
-      break;
-    default:
-      break;
+  // "NeoPixel", "Analog RGB"
+  //if((String)lampType == (String)"NeoPixel"){
+  if(lampType == 1){
+    initStripNeoPixel();
+    return;
   }
+  initStripAnalog();
 }
 
 void setColorNeoPixel(RGB color){
@@ -43,12 +40,11 @@ void setColorAnalog(RGB color){
 }
 void setColor(RGB color){
   // set new color
-  switch (lampType) {
-    case 1:
-      setColorNeoPixel(color);
-      break;
-    case 2:
-      setColorAnalog(color);
-      break;
+  // "NeoPixel", "Analog RGB"
+  //if((String)lampType == (String)"NeoPixel"){
+  if(lampType == 1){
+    setColorNeoPixel(color);
+    return;
   }
+  setColorAnalog(color);
 }

@@ -18,33 +18,16 @@ Date: 16 December 2018
 
 WebSocketsServer webSocket = WebSocketsServer(80);
 
-// 1 = NeoPixel, 2=RGB Analog
+// "NeoPixel", "Analog RGB"
+//char lampType[64] = "Analog RGB";
 int lampType = 2;
-//char* lampTypes[2] = {"NeoPixel", "Analog RGB"};
+
 
 struct RGB {
   byte r;
   byte g;
   byte b;
 };
-
-/*
-API - running
-===============================================================================
-<color values are from 0-255>
-~WIFI~
-/saveModes?modes=<JSON.decoded list of Modes>
-  => save List in Storage
-/setMode?mode=id
-  => set Mode with id
-/setColor?r=<red value>&g=<green value>&b=<blue value>
-  => set Mode with id
-
-~BUTTON~
-Button-pressed
-  => Mode::nextMode()
-===============================================================================
-*/
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght) {
   switch(type) {

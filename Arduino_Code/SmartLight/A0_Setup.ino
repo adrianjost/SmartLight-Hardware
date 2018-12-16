@@ -1,21 +1,23 @@
-#define configFilePath "/config.json"
+#define configFilePath "/userconfig.json"
 
 bool shouldSaveConfig = false;
-char hostname[32] = "SmartLight";
+char hostname[64];
 
 void saveConfigCallback () {
   shouldSaveConfig = true;
 }
 
 void setupSpiffs(){
-  //clean FS, for testing
-  //SPIFFS.format();
+  ("SmartLight-" + String(ESP.getChipId(), HEX)).toCharArray(hostname, 64);
 
   if (SPIFFS.begin()) {
+      String("Step-1").toCharArray(hostname, 64);
     if (SPIFFS.exists(configFilePath)) {
+      String("Step-2").toCharArray(hostname, 64);
       //file exists, reading and loading
       File configFile = SPIFFS.open(configFilePath, "r");
       if (configFile) {
+        String("Step-3").toCharArray(hostname, 64);
         size_t size = configFile.size();
         // Allocate a buffer to store contents of the file.
         std::unique_ptr<char[]> buf(new char[size]);
@@ -24,7 +26,10 @@ void setupSpiffs(){
         DynamicJsonBuffer jsonBuffer;
         JsonObject& json = jsonBuffer.parseObject(buf.get());
         if (json.success()) {
-          strcpy(hostname, json["hostname"]); // copy from config to variable
+          String("Step-4").toCharArray(hostname, 64);
+          // copy from config to variable
+          strcpy(hostname, json["hostname"]);
+          //strcpy(lampType, json["lampType"]);
         }
       }
     }
@@ -39,22 +44,20 @@ void setupWifi(){
   wm.setHostname(hostname);
 
   // custom hostname
-  WiFiManagerParameter setting_hostname("hostname", "Devicename: (e.g. smartlight-xxx)", hostname, 32);
+  WiFiManagerParameter setting_hostname("hostname", "Devicename: (e.g. smartlight-xxx)", hostname, 64);
   wm.addParameter(&setting_hostname);
-
-  /*
-  // configure mode of connected light
-  WiFiManagerParameter setting_lamptype_text("<code>1=NeoPixel, 2=Analog, 3=???</code>");
+/*
+  // configure type of connected light
+  WiFiManagerParameter setting_lamptype_text("<p>Options: <code>NeoPixel</code>, <code>Analog RGB</code></p>");
   wm.addParameter(&setting_lamptype_text);
-  WiFiManagerParameter setting_lamptype("lamptype", "Type of connected lamp:", lampTypes[lampType], 32);
-  wm.addParameter(&setting_lamptype);
-  */
 
-  //if(!wm.autoConnect("SmartLight-" + String(ESP.getChipId()), "LightItUp"){
+  WiFiManagerParameter setting_lamptype("lamptype", "Type of connected lamp:", lampType, 64);
+  wm.addParameter(&setting_lamptype);
+*/
   if(!wm.autoConnect("SmartLight Setup", "LightItUp")){
     // shut down till the next reboot
     //ESP.deepSleep(86400000000); // 1 Day
-    ESP.deepSleep(6000); // 1 Minute
+    ESP.deepSleep(600000000); // 10 Minutes
     ESP.reset();
   }
 
@@ -64,15 +67,7 @@ void setupWifi(){
     JsonObject& json = jsonBuffer.createObject();
 
     json["hostname"] = setting_hostname.getValue();
-
-    /*
-    const char* typeString = setting_lamptype.getValue();
-    if(typeString == lampTypes[0]){
-      json["lampType"] = 0;
-    }
-    if(typeString == lampTypes[1]){
-      json["lampType"] = 1;
-    }*/
+    //json["lampType"] = setting_lamptype.getValue();
 
     File configFile = SPIFFS.open(configFilePath, "w");
     json.printTo(configFile);
