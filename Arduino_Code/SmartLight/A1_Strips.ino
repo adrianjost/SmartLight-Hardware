@@ -19,8 +19,7 @@ void initStripAnalog(){
 void initStrip(){
   // set new color
   // "NeoPixel", "Analog RGB"
-  //if((String)lampType == (String)"NeoPixel"){
-  if(lampType == 1){
+  if((String)lampType == (String)"NeoPixel"){
     initStripNeoPixel();
     return;
   }
@@ -41,8 +40,7 @@ void setColorAnalog(RGB color){
 void setColor(RGB color){
   // set new color
   // "NeoPixel", "Analog RGB"
-  //if((String)lampType == (String)"NeoPixel"){
-  if(lampType == 1){
+  if((String)lampType == (String)"NeoPixel"){
     setColorNeoPixel(color);
     return;
   }

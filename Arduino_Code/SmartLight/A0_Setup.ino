@@ -29,7 +29,7 @@ void setupSpiffs(){
           String("Step-4").toCharArray(hostname, 64);
           // copy from config to variable
           strcpy(hostname, json["hostname"]);
-          //strcpy(lampType, json["lampType"]);
+          strcpy(lampType, json["lampType"]);
         }
       }
     }
@@ -43,17 +43,12 @@ void setupWifi(){
   wm.setSaveConfigCallback(saveConfigCallback);
   wm.setHostname(hostname);
 
-  // custom hostname
   WiFiManagerParameter setting_hostname("hostname", "Devicename: (e.g. smartlight-xxx)", hostname, 64);
-  wm.addParameter(&setting_hostname);
-/*
-  // configure type of connected light
-  WiFiManagerParameter setting_lamptype_text("<p>Options: <code>NeoPixel</code>, <code>Analog RGB</code></p>");
-  wm.addParameter(&setting_lamptype_text);
+  WiFiManagerParameter setting_lamptype("lamptype", "Type of connected lamp:<br/><span>Options: <code>NeoPixel</code>, <code>Analog RGB</code></span>", lampType, 64);
 
-  WiFiManagerParameter setting_lamptype("lamptype", "Type of connected lamp:", lampType, 64);
+  wm.addParameter(&setting_hostname);
   wm.addParameter(&setting_lamptype);
-*/
+
   if(!wm.autoConnect("SmartLight Setup", "LightItUp")){
     // shut down till the next reboot
     //ESP.deepSleep(86400000000); // 1 Day
@@ -67,11 +62,12 @@ void setupWifi(){
     JsonObject& json = jsonBuffer.createObject();
 
     json["hostname"] = setting_hostname.getValue();
-    //json["lampType"] = setting_lamptype.getValue();
+    json["lampType"] = setting_lamptype.getValue();
 
     File configFile = SPIFFS.open(configFilePath, "w");
     json.printTo(configFile);
     configFile.close();
     shouldSaveConfig = false;
+    ESP.reset();
   }
 }

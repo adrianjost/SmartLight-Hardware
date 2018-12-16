@@ -19,8 +19,7 @@ Date: 16 December 2018
 WebSocketsServer webSocket = WebSocketsServer(80);
 
 // "NeoPixel", "Analog RGB"
-//char lampType[64] = "Analog RGB";
-int lampType = 2;
+char lampType[64] = "Analog RGB";
 
 
 struct RGB {
@@ -83,13 +82,12 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
 }
 
 void setup() {
+  setupSpiffs();
+
   initStrip();
 
   setColor(RGB{0,0,55});
-
-  setupSpiffs();
   setupWifi();
-
   setColor(RGB{0,0,0});
 
   webSocket.begin();
