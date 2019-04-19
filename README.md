@@ -1,5 +1,11 @@
 This Version was designed with the awesome web tool https://easyeda.com
 
+# Assembling
+
+The full tutorial can be found at: [https://docs.smartlight.adrianjost.dev](https://docs.smartlight.adrianjost.dev/setup/build-the-hardware)
+
+# Schematics
+
 ![](./schematic-v1.png)
 
 ![](./pcb-v1.png)
