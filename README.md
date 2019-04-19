@@ -1,4 +1,4 @@
-This Version was desinged with the awesome web tool https://easyeda.com
+This Version was designed with the awesome web tool https://easyeda.com
 
 ![](./schematic-v1.png)
 
