@@ -2,7 +2,7 @@ This Version was designed with the awesome web tool https://easyeda.com
 
 # Assembling
 
-The full tutorial can be found at: [https://docs.smartlight.adrianjost.dev](https://docs.smartlight.adrianjost.dev/setup/build-the-hardware)
+The full tutorial can be found at: [https://docs.smartlight.ga](https://docs.smartlight.ga/setup/build-the-hardware)
 
 # Schematics
 
