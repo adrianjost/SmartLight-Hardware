@@ -2,11 +2,11 @@
 
 This Version was designed with the awesome web tool https://easyeda.com. You can find the complete project [here](https://easyeda.com/adrian.aus.berlin/SmartLight-6ff7039580814d20a6c5e83e7830ab1b) and can modify it.
 
-<center>
-  <a href="./Gerber_SmartLight-V3.1.zip" download target="_blank">
-  <img alt="Download Gerber Files" src="./img/Download.svg" width="50%"/>
-  </a>
-</center>
+<a href="./Gerber_SmartLight-V3.1.zip" download target="_blank">
+  <center>
+    <img alt="Download Gerber Files" src="./img/Download.svg" width="50%"/>
+  </center>
+</a>
 
 ## Assembling
 
