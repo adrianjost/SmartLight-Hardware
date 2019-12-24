@@ -38,4 +38,4 @@ And the MOSFET Module Pulls it down.
 **Solution:**
 
 1. Power up the ESP without the MOSFET PCB connected and only connect the PCB a couple of seconds later.
-2. ~Remove the R6 Pull Down Resistor resistors.~
+2. Remove the R5 (and maybe also the R6) Pull Down Resistor resistors.
