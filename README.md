@@ -29,7 +29,13 @@ The full tutorial can be found at: [https://docs.smartlight.ga](https://docs.sma
 
 ## ESP is not booting when the MOSFET PCB is connected [#2](https://github.com/adrianjost/SmartLight-Hardware/issues/2)
 
+**Problem:**
+
+> [GPIO2] needs to be HIGH at boot time, otherwise the module won't boot. - [https://arduino.stackexchange.com](https://arduino.stackexchange.com/questions/37303/esp8266-esp-01-not-booting-with-load-on-io-pin-2)
+
+And the MOSFET Module Pulls it down.
+
 **Solution:**
 
 1. Power up the ESP without the MOSFET PCB connected and only connect the PCB a couple of seconds later.
-2. Remove the R5, R6, R7 resistors.
+2. Remove the R6 Pull Down Resistor resistors.
