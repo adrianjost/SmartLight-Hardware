@@ -2,19 +2,28 @@
 
 This Version was designed with the awesome web tool https://easyeda.com. You can find the complete project [here](https://easyeda.com/adrian.aus.berlin/SmartLight-6ff7039580814d20a6c5e83e7830ab1b) and can modify it.
 
+<center>
+  <a href="./Gerber_SmartLight-V3.1.zip" download target="_blank">
+  <img alt="Download Gerber Files" src="./img/Download.svg" width="50%"/>
+  </a>
+</center>
+
 ## Assembling
 
 The full tutorial can be found at: [https://docs.smartlight.ga](https://docs.smartlight.ga/setup/build-the-hardware).
 
 ## Schematic
 
-![Schematic](./img/Schematic-V3.1.svg)
+<center>
+  <img alt="Schematic" src="./img/Schematic-V3.1.svg" width="100%" />
+</center>
 
 ## PCB(s)
 
-![PCB Top Side](./img/PCB-V3.1-Top.svg)
-
-![PCB Bottom Side](./img/PCB-V3.1-Bottom.svg)
+<center>
+  <img alt="PCB Top Side", src="./img/PCB-V3.1-Top.svg"  width="100%"/>
+  <img alt="PCB Bottom Side", src="./img/PCB-V3.1-Bottom.svg" width="100%"/>
+</center>
 
 ## Known Issues & Workarounds
 
