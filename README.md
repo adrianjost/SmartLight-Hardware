@@ -26,6 +26,9 @@ The full tutorial can be found at: [https://docs.smartlight.ga](https://docs.sma
   <img alt="PCB 3D Preview", src="./img/3D-Preview-V4.0.png" width="100%"/>
 </center>
 
-## Known Issues & Workarounds
+## Known Issues & Workarounds & Learnings
 
-- do not populate R2, R4 and R5, those will prevent the ESP from booting and are not required.
+- do not populate `R2`, `R4` and `R5`, those will prevent the ESP from booting and are not required.
+- The spacing of `JP1` could be smaller to make soldering easier. Most of the time it's also the default, so in the next version there should be a thin, cuttable trace in between.
+- `U2` (`LD1117V33`) get's really hot when converting 12V to 3.3V. I don't know yet why, but when keeping it in contact with a little bit of metal it's fine for now. In future versions an alternative voltage converter should be considered. But Coils are still a no-go because of the occasional coil-wine.
+- There are smaller button types that would help to free up some more 
