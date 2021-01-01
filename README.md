@@ -28,4 +28,4 @@ The full tutorial can be found at: [https://docs.smartlight.ga](https://docs.sma
 
 ## Known Issues & Workarounds
 
-none yet
+- do not populate R2, R4 and R5, those will prevent the ESP from booting and are not required.
